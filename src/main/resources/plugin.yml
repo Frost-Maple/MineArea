@@ -1,0 +1,8 @@
+name: MineArea
+version: '${version}'
+main: com.mixpixel.MineArea
+api-version: '1.17'
+commands:
+  MineArea:
+    description: "Design a specific area for mining."
+    aliases: ma
