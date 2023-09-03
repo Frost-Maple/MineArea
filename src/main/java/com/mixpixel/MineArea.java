@@ -32,7 +32,7 @@ public final class MineArea extends JavaPlugin {
                 Build 1.0.0(119)
                 By Lettuce
                 With help from OPenAI's ChatGPT
-                On 2 Sep '23
+                On 3 Sep '23
                 Bye!
                 """);
     }
