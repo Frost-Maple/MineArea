@@ -29,7 +29,7 @@ public final class MineArea extends JavaPlugin {
         // Plugin shutdown logic
         System.out.println("""
                 MineArea is Unloading. Thank you for using.
-                Build 0.1.12(0123)
+                Build 0.1.12(0125)
                 By Lettuce
                 With help from OPenAI's ChatGPT
                 On 3 Sep '23

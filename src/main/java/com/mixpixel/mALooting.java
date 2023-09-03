@@ -29,6 +29,7 @@ public class mALooting {
         ItemStack itemStack = new ItemStack(Material.EMERALD_BLOCK);
         inventory.addItem(itemStack);
         blockStateMeta.setBlockState(shulkerBox1);
+        shulkerBox.setItemMeta(blockStateMeta);
         world.dropItemNaturally(location, shulkerBox);
     }
 }
