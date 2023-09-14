@@ -29,7 +29,7 @@ public final class MineArea extends JavaPlugin {
         // Plugin shutdown logic
         System.out.println("""
                 MineArea is Unloading. Thank you for using.
-                Build 0.2.16(0137)
+                Build 0.2.17(0140)
                 By Lettuce
                 With help from OPenAI's ChatGPT
                 On 14 Sep '23
@@ -59,6 +59,7 @@ public final class MineArea extends JavaPlugin {
         System.out.println("Loaded specified Mining Area: x coordinates "+xMin+" to "+xMax+", z coordinates "+zMin+" to "+zMax);
     }
     public void loadLoot(){
+        reloadConfig();
         ConfigurationSection configurationSection = getConfig().getConfigurationSection("LootTable");
         if (configurationSection != null){
             Set<String>loots = configurationSection.getKeys(false);

@@ -23,15 +23,15 @@ public class mADrop {
                 }
             }
             else{
-                Material material = matchMaterial(str);
+                Material material = matchMaterial(configurationSection.getString(str + ".Id"));
                 if (material != null) {
                     ItemStack itemStack = new ItemStack(material);
                     ItemMeta itemMeta = itemStack.getItemMeta();
-                    itemMeta.setDisplayName(Objects.requireNonNull(configurationSection.getString(str + ".Display")).replace("&","Â§"));
+                    itemMeta.setDisplayName(Objects.requireNonNull(configurationSection.getString(str + ".Display")).replace("&","¡ì"));
                     List<String> list = configurationSection.getStringList(str+".Lore");
                     List<String> newLore = new ArrayList<>();
                     for (String string: list){
-                        newLore.add(string.replace("&","Â§"));
+                        newLore.add(string.replace("&","¡ì"));
                     }
                     itemMeta.setLore(newLore);
                     itemStack.setItemMeta(itemMeta);
