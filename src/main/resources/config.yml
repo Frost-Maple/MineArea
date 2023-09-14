@@ -6,15 +6,15 @@ Area:
 LootTable:
   1:
     Id: Diamond
-    Display: "&f1£¡"
+    Display: "&f1ï¼"
     Possibility: 10000
-    #PossibilityÊäÈë·½Ê½£ºÍò·ÖÖ®p£¬¼´10000Îª±Ø¶¨µôÂä£¬0Îª²»µôÂä
+    #Possibilityè¾“å…¥æ–¹å¼ï¼šä¸‡åˆ†ä¹‹pï¼Œå³10000ä¸ºå¿…å®šæ‰è½ï¼Œ0ä¸ºä¸æ‰è½
     Lore:
-      - '&fİ«ÜÄ'
-      - '&fİ«ÜÄ'
+      - '&fè´è‹£'
+      - '&fè´è‹£'
   2:
     Id: Paper
-    Display: "&75£¡"
+    Display: "&75ï¼"
     Possibility: 10000
     Lore:
       - '&fWJ'

@@ -3,7 +3,6 @@ package com.mixpixel;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -21,20 +20,18 @@ public class mALootTable {
         public @NotNull Collection<ItemStack> populateLoot(@NotNull Random random, @NotNull LootContext context) {
             Collection<ItemStack> lootItems = new ArrayList<>();
             for (String loot : loots) {
-                @NotNull FileConfiguration config =  MineArea.main.getConfig();
                 ConfigurationSection configurationSection = MineArea.main.getConfig().getConfigurationSection("LootTable");
-                if (random.nextInt(10000)<config.getInt(loot+".Possibility")){
-                    System.out.println("Random generated.");
-                    assert configurationSection != null;
+                System.out.println(random.nextInt(10000));
+                assert configurationSection != null;
+                if (random.nextInt(10000)<configurationSection.getInt(loot+".Possibility")){
                     Material material = Material.matchMaterial(Objects.requireNonNull(configurationSection.getString(loot + ".Id")));
-                    System.out.println(material);
                     assert material != null;
                     ItemStack itemStack = new ItemStack(material);
                     ItemMeta itemMeta = itemStack.getItemMeta();
-                    itemMeta.setDisplayName(configurationSection.getString(loot+".Display"));
+                    itemMeta.setDisplayName(configurationSection.getString(loot+".Display").replace("&","¡ì"));
                     List<String>newLore = new ArrayList<>();
                     for (String loreLine : configurationSection.getStringList(loot+".Lore")){
-                        newLore.add(loreLine.replace("&","Â§"));
+                        newLore.add(loreLine.replace("&","¡ì"));
                     }
                     itemMeta.setLore(newLore);
                     itemStack.setItemMeta(itemMeta);
