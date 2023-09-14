@@ -3,3 +3,19 @@ Area:
   xMax: 10
   zMin: -10
   zMax: 10
+LootTable:
+  1:
+    Id: Diamond
+    Display: "&f1！"
+    Possibility: 10000
+    #Possibility输入方式：万分之p，即10000为必定掉落，0为不掉落
+    Lore:
+      - '&f莴苣'
+      - '&f莴苣'
+  2:
+    Id: Paper
+    Display: "&75！"
+    Possibility: 10000
+    Lore:
+      - '&fWJ'
+      - '&fWJ'
