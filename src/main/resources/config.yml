@@ -3,6 +3,7 @@ Area:
   xMax: 10
   zMin: -10
   zMax: 10
+#以上，配置“矿区”的范围：xz坐标位于范围内、y坐标不限。
 LootTable:
   1:
     Id: Diamond
@@ -19,3 +20,73 @@ LootTable:
     Lore:
       - '&fWJ'
       - '&fWJ'
+#以上，配置掉落【宝箱】中的物品情况
+Drops:
+#下列各掉落物的掉落，相互独立，分别使用不同的随机数抽取！
+  Tc:
+    Id: Treasure_Chest
+    Possibility: 10000
+#Id为Treasure_Chest的掉落物掉落潜影盒（未染色），内含LootTable中配置的物品
+#Id为Treasure_Chest的掉落物，写了Display和Lore也没用哦
+  1:
+    Id: Paper
+    Display: "&fLatest.log"
+    Possibility: 10000
+    Lore:
+      - '&f插件运行记录'
+      - '&f写着：&l"插件运行正常！"'
+  2:
+    Id: Emerald
+    Display: "&f祖母绿"
+    Possibility: 10000
+    Lore:
+      - '&fwj'
+      - '&awj'
+  2b:
+    Id: Emerald
+    Display: "&f祖母绿"
+    Possibility: 10000
+    Lore:
+      - '&fwj'
+      - '&awj'
+  2c:
+    Id: Emerald
+    Display: "&f祖母绿"
+    Possibility: 10000
+    Lore:
+      - '&fwj'
+      - '&awj'
+  2d:
+    Id: Emerald
+    Display: "&f祖母绿"
+    Possibility: 10000
+    Lore:
+      - '&fwj'
+      - '&awj'
+  2e:
+    Id: Emerald
+    Display: "&f祖母绿"
+    Possibility: 1000
+    Lore:
+      - '&fwj'
+      - '&awj'
+  3:
+    Id: Raw_iron
+    Display: "&f钨矿石"
+    Possibility: 700
+    Lore:
+      - '&f重要的工业原料'
+  4:
+    Id: Quartz
+    Display: "&f冰晶石"
+    Possibility: 100
+    Lore:
+      - '&f冰晶石'
+      - '&f&lNa3AlF6'
+  5:
+    Id: Enchanted_Book
+    Display: "&f《红楼梦》残卷（下）"
+    Possibility: 7
+    Lore:
+      - '&f《红楼梦》的手稿'
+      - '&f包含第81-120回'

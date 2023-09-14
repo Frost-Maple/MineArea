@@ -24,10 +24,11 @@ public class mALooting {
         LootTable lootTable = mALootTable.lootTable;
         Collection<ItemStack> items = lootTable.populateLoot(new Random(),lootContext);
         for (ItemStack itemStack: items){
-            inventory.addItem(itemStack);
+            int a = new Random().nextInt(27);
+            inventory.setItem(a,itemStack);
         }
         blockStateMeta.setBlockState(shulkerBox1);
         shulkerBox.setItemMeta(blockStateMeta);
-        world.dropItemNaturally(location, shulkerBox);
+        mADrop.dropItem(location, shulkerBox);
     }
 }
