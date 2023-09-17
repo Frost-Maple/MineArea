@@ -21,6 +21,7 @@ public final class MineArea extends JavaPlugin {
         main = this;
         Objects.requireNonNull(Bukkit.getPluginCommand("MineArea")).setExecutor(new mACommand());
         Bukkit.getPluginManager().registerEvents(new mAListener(),this);
+        Objects.requireNonNull(Bukkit.getPluginCommand("MineArea")).setTabCompleter(new mATabCompleter());
         System.out.println("MineArea for MixPixel has loaded.");
     }
 
@@ -29,10 +30,12 @@ public final class MineArea extends JavaPlugin {
         // Plugin shutdown logic
         System.out.println("""
                 MineArea is Unloading. Thank you for using.
-                Build 0.2.17(0140)
+                Build 0.2.19(0156)
+                To MixPixel
                 By Lettuce
-                With help from OPenAI's ChatGPT
-                On 14 Sep '23
+                With help from OpenAI's ChatGPT
+                On 17 Sep '23
+                In memories of Six Sixty
                 Bye!
                 """);
     }
@@ -60,6 +63,7 @@ public final class MineArea extends JavaPlugin {
     }
     public void loadLoot(){
         reloadConfig();
+        looter.clear();
         ConfigurationSection configurationSection = getConfig().getConfigurationSection("LootTable");
         if (configurationSection != null){
             Set<String>loots = configurationSection.getKeys(false);

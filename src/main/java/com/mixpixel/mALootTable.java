@@ -21,37 +21,31 @@ public class mALootTable {
             Collection<ItemStack> lootItems = new ArrayList<>();
             for (String loot : loots) {
                 ConfigurationSection configurationSection = MineArea.main.getConfig().getConfigurationSection("LootTable");
-                System.out.println(random.nextInt(10000));
                 assert configurationSection != null;
-                if (random.nextInt(10000)<configurationSection.getInt(loot+".Possibility")){
+                int randomInteger = random.nextInt(10000);
+                if (configurationSection.get(loot+"Possibility") == null || configurationSection.get(loot + ".Id") == null){
+                    throw new RuntimeException("Config.yml ≈‰÷√¥ÌŒÛ£°");
+                }
+                if (randomInteger<configurationSection.getInt(loot+".Possibility")){
                     Material material = Material.matchMaterial(Objects.requireNonNull(configurationSection.getString(loot + ".Id")));
-                    assert material != null;
-                    ItemStack itemStack = new ItemStack(material);
-                    ItemMeta itemMeta = itemStack.getItemMeta();
-                    itemMeta.setDisplayName(configurationSection.getString(loot+".Display").replace("&","°Ï"));
-                    List<String>newLore = new ArrayList<>();
-                    for (String loreLine : configurationSection.getStringList(loot+".Lore")){
-                        newLore.add(loreLine.replace("&","°Ï"));
+                    if (material != null){
+                        ItemStack itemStack = new ItemStack(material);
+                        ItemMeta itemMeta = itemStack.getItemMeta();
+                        itemMeta.setDisplayName(Objects.requireNonNull(configurationSection.getString(loot + ".Display")).replace("&","°Ï"));
+                        List<String>newLore = new ArrayList<>();
+                        for (String loreLine : configurationSection.getStringList(loot+".Lore")){
+                            newLore.add(loreLine.replace("&","°Ï"));
+                        }
+                        itemMeta.setLore(newLore);
+                        itemStack.setItemMeta(itemMeta);
+                        lootItems.add(itemStack);
                     }
-                    itemMeta.setLore(newLore);
-                    itemStack.setItemMeta(itemMeta);
-                    lootItems.add(itemStack);
+                    else {
+                        throw new RuntimeException("ŒÔ∆∑"+loot+"÷–µƒ Id ≈‰÷√¥ÌŒÛ£°");
+                    }
                 }
             }
 
-            int possibility1 = random.nextInt(100000);
-            if (possibility1<0){
-                ItemStack itemStack = new ItemStack(Material.DIAMOND, 4);
-                lootItems.add(itemStack);
-            }
-            if (possibility1<0) {
-                ItemStack itemStack = new ItemStack(Material.EMERALD, 8);
-                lootItems.add(itemStack);
-            }
-            if (possibility1<0){
-                ItemStack itemStack = new ItemStack(Material.ENCHANTED_GOLDEN_APPLE, 1);
-                lootItems.add(itemStack);
-            }
             return lootItems;
         }
 

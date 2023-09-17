@@ -1,7 +1,6 @@
 package com.mixpixel;
 
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,11 +13,10 @@ public class mAListener implements Listener {
         Player player = event.getPlayer();
         Block block = event.getBlock();
         Location dugBlock = block.getLocation();
-        World world = block.getWorld();
         if (MineArea.main.locations.contains(dugBlock)){
             event.setDropItems(false);
             player.sendMessage("你正在矿场中挖掘！");
-            mALooting.looting(player, world, dugBlock);
+            mALooting.looting(player, dugBlock);
         }
     }
 }

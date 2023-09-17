@@ -23,7 +23,7 @@ public class mADrop {
                 }
             }
             else{
-                Material material = matchMaterial(configurationSection.getString(str + ".Id"));
+                Material material = matchMaterial(Objects.requireNonNull(configurationSection.getString(str + ".Id")));
                 if (material != null) {
                     ItemStack itemStack = new ItemStack(material);
                     ItemMeta itemMeta = itemStack.getItemMeta();
