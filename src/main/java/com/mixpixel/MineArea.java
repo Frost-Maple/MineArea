@@ -14,7 +14,6 @@ import java.util.*;
 public final class MineArea extends JavaPlugin {
     static MineArea main;
     public List<String> looter = new ArrayList<>();
-    public List<String> configs = new ArrayList<>();
     public List<FileConfiguration> fileConfigurations = new ArrayList<>();
     public FileConfiguration configUsed;
 
@@ -35,7 +34,7 @@ public final class MineArea extends JavaPlugin {
         // Plugin shutdown logic
         System.out.println("""
                 MineArea is Unloading. Thank you for using.
-                Build 0.3.20(0162)
+                Build 0.3.20(0166)
                 To MixPixel
                 By Lettuce
                 With help from OpenAI's ChatGPT
@@ -46,28 +45,17 @@ public final class MineArea extends JavaPlugin {
     }
     public void loadConfigs(){
         loadOtherFiles();
-        loadLoot();
         }
 
-    public void loadLoot(){
-        reloadConfig();
-        looter.clear();
-        ConfigurationSection configurationSection = getConfig().getConfigurationSection("LootTable");
-        if (configurationSection != null){
-            Set<String>loots = configurationSection.getKeys(false);
-            System.out.println(loots);
-            looter.addAll(loots);
-        }
-    }
+
     public void loadOtherFiles(){
+        fileConfigurations.clear();
         File[] configurations = getDataFolder().listFiles();
         assert configurations != null;
         for (File config: configurations) {
-                if (!config.getName().equals("config.yml")) {
-                    configs.add(config.getName());
                     FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(config);
                     fileConfigurations.add(fileConfiguration);
-                }
+
         }
 
     }

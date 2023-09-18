@@ -23,7 +23,7 @@ public class mALootTable {
                 ConfigurationSection configurationSection = MineArea.main.configUsed.getConfigurationSection("LootTable");
                 assert configurationSection != null;
                 int randomInteger = random.nextInt(10000);
-                if (configurationSection.get(loot+"Possibility") == null || configurationSection.get(loot + ".Id") == null){
+                if (configurationSection.get(loot+".Possibility") == null || configurationSection.get(loot + ".Id") == null){
                     throw new RuntimeException("Config.yml ≈‰÷√¥ÌŒÛ£°");
                 }
                 if (randomInteger<configurationSection.getInt(loot+".Possibility")){

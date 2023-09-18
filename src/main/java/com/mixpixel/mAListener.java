@@ -4,6 +4,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,6 +14,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static org.bukkit.Bukkit.getServer;
 public class mAListener implements Listener {
@@ -25,6 +27,7 @@ public class mAListener implements Listener {
         Boolean check = matchLocation(dugBlock);
         if (check){
             event.setDropItems(false);
+            loadLoot(MineArea.main.configUsed);
             player.sendMessage("你正在满足"+MineArea.main.configUsed+"规定的条件！");
             mALooting.looting(player, dugBlock);
         }
@@ -54,6 +57,15 @@ public class mAListener implements Listener {
             System.out.println("Loaded specified Mining Area: x coordinates "+xMin+" to "+xMax+", z coordinates "+zMin+" to "+zMax);
         }
         return false;
+    }
+    public void loadLoot(FileConfiguration fileConfiguration){
+        MineArea.main.looter.clear();
+        ConfigurationSection configurationSection = fileConfiguration.getConfigurationSection("LootTable");
+        if (configurationSection != null){
+            Set<String> loots = configurationSection.getKeys(false);
+            System.out.println(loots);
+            MineArea.main.looter.addAll(loots);
+        }
     }
 
 }
