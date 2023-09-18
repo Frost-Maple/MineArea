@@ -3,6 +3,7 @@ package com.mixpixel;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -15,12 +16,11 @@ import java.util.*;
 public class mALootTable {
     private static final List<String> loots = MineArea.main.looter;
     public static LootTable lootTable = new LootTable() {
-
         @Override
         public @NotNull Collection<ItemStack> populateLoot(@NotNull Random random, @NotNull LootContext context) {
             Collection<ItemStack> lootItems = new ArrayList<>();
             for (String loot : loots) {
-                ConfigurationSection configurationSection = MineArea.main.getConfig().getConfigurationSection("LootTable");
+                ConfigurationSection configurationSection = MineArea.main.configUsed.getConfigurationSection("LootTable");
                 assert configurationSection != null;
                 int randomInteger = random.nextInt(10000);
                 if (configurationSection.get(loot+"Possibility") == null || configurationSection.get(loot + ".Id") == null){

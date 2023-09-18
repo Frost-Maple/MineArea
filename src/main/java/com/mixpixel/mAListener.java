@@ -17,7 +17,6 @@ import java.util.List;
 import static org.bukkit.Bukkit.getServer;
 public class mAListener implements Listener {
     public List<Location> locations = new ArrayList<>();
-    public FileConfiguration configUsed;
     @EventHandler
     public void playerDig(BlockBreakEvent event){
         Player player = event.getPlayer();
@@ -26,7 +25,7 @@ public class mAListener implements Listener {
         Boolean check = matchLocation(dugBlock);
         if (check){
             event.setDropItems(false);
-            player.sendMessage("你正在满足"+configUsed+"规定的条件！");
+            player.sendMessage("你正在满足"+MineArea.main.configUsed+"规定的条件！");
             mALooting.looting(player, dugBlock);
         }
         Material material = block.getType();
@@ -46,7 +45,7 @@ public class mAListener implements Listener {
                     for (int y = 0; y <= 256; y++) {
                         Location location1 = new Location(world, i, y, z);
                         if (location1.equals(location)){
-                            configUsed = fileConfiguration;
+                            MineArea.main.configUsed = fileConfiguration;
                             return true;
                         }
                     }

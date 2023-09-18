@@ -16,6 +16,8 @@ public final class MineArea extends JavaPlugin {
     public List<String> looter = new ArrayList<>();
     public List<String> configs = new ArrayList<>();
     public List<FileConfiguration> fileConfigurations = new ArrayList<>();
+    public FileConfiguration configUsed;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -33,7 +35,7 @@ public final class MineArea extends JavaPlugin {
         // Plugin shutdown logic
         System.out.println("""
                 MineArea is Unloading. Thank you for using.
-                Build 0.3.20(0161)
+                Build 0.3.20(0162)
                 To MixPixel
                 By Lettuce
                 With help from OpenAI's ChatGPT

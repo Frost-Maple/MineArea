@@ -13,7 +13,7 @@ import static org.bukkit.Material.matchMaterial;
 public class mADrop {
     public static void dropItem(Location location, ItemStack treasureChest){
         Random random = new Random();
-        ConfigurationSection configurationSection = MineArea.main.getConfig().getConfigurationSection("Drops");
+        ConfigurationSection configurationSection = MineArea.main.configUsed.getConfigurationSection("Drops");
         assert configurationSection != null: "Invalid configurationSection";
         Set<String> set = configurationSection.getKeys(false);
         for (String str: set){
