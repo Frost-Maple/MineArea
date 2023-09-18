@@ -34,7 +34,7 @@ public final class MineArea extends JavaPlugin {
         // Plugin shutdown logic
         System.out.println("""
                 MineArea is Unloading. Thank you for using.
-                Build 0.3.20(0166)
+                Build 0.3.20(0168)
                 To MixPixel
                 By Lettuce
                 With help from OpenAI's ChatGPT
@@ -55,7 +55,7 @@ public final class MineArea extends JavaPlugin {
         for (File config: configurations) {
                     FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(config);
                     fileConfigurations.add(fileConfiguration);
-
+            System.out.println("Loaded Configuration file: "+config.getName()+" successfully.");
         }
 
     }

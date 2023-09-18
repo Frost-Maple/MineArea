@@ -54,7 +54,6 @@ public class mAListener implements Listener {
                     }
                 }
             }
-            System.out.println("Loaded specified Mining Area: x coordinates "+xMin+" to "+xMax+", z coordinates "+zMin+" to "+zMax);
         }
         return false;
     }
@@ -63,7 +62,6 @@ public class mAListener implements Listener {
         ConfigurationSection configurationSection = fileConfiguration.getConfigurationSection("LootTable");
         if (configurationSection != null){
             Set<String> loots = configurationSection.getKeys(false);
-            System.out.println(loots);
             MineArea.main.looter.addAll(loots);
         }
     }
