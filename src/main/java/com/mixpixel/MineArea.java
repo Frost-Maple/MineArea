@@ -4,15 +4,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.*;
 
 public final class MineArea extends JavaPlugin {
     static MineArea main;
-    public List<Location> locations = new ArrayList<>();
     public List<String> looter = new ArrayList<>();
-
+    public List<String> configs = new ArrayList<>();
+    public List<FileConfiguration> fileConfigurations = new ArrayList<>();
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -30,37 +33,20 @@ public final class MineArea extends JavaPlugin {
         // Plugin shutdown logic
         System.out.println("""
                 MineArea is Unloading. Thank you for using.
-                Build 0.2.19(0156)
+                Build 0.3.20(0161)
                 To MixPixel
                 By Lettuce
                 With help from OpenAI's ChatGPT
-                On 17 Sep '23
+                On 18 Sep '23
                 In memories of Six Sixty
                 Bye!
                 """);
     }
     public void loadConfigs(){
-        loadLocations();
+        loadOtherFiles();
         loadLoot();
         }
-    public void loadLocations(){
-        locations.clear();
-        reloadConfig();
-        int xMin = getConfig().getInt("Area.xMin");
-        int xMax = getConfig().getInt("Area.xMax");
-        int zMin = getConfig().getInt("Area.zMin");
-        int zMax = getConfig().getInt("Area.zMax");
-        for (int i = xMin; i <= xMax; i++){
-            for (int z = zMin; z <= zMax; z++){
-                World world = getServer().getWorld("world");
-                for (int y = 0; y <= 256; y++) {
-                    Location location = new Location(world, i, y, z);
-                    locations.add(location);
-                }
-            }
-        }
-        System.out.println("Loaded specified Mining Area: x coordinates "+xMin+" to "+xMax+", z coordinates "+zMin+" to "+zMax);
-    }
+
     public void loadLoot(){
         reloadConfig();
         looter.clear();
@@ -70,5 +56,17 @@ public final class MineArea extends JavaPlugin {
             System.out.println(loots);
             looter.addAll(loots);
         }
+    }
+    public void loadOtherFiles(){
+        File[] configurations = getDataFolder().listFiles();
+        assert configurations != null;
+        for (File config: configurations) {
+                if (!config.getName().equals("config.yml")) {
+                    configs.add(config.getName());
+                    FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(config);
+                    fileConfigurations.add(fileConfiguration);
+                }
+        }
+
     }
 }
