@@ -1,9 +1,6 @@
 package com.mixpixel;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.World;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,7 +23,7 @@ public final class MineArea extends JavaPlugin {
         Objects.requireNonNull(Bukkit.getPluginCommand("MineArea")).setExecutor(new mACommand());
         Bukkit.getPluginManager().registerEvents(new mAListener(),this);
         Objects.requireNonNull(Bukkit.getPluginCommand("MineArea")).setTabCompleter(new mATabCompleter());
-        System.out.println("MineArea for MixPixel has loaded.");
+        System.out.println("MineArea for MCBBS has loaded.");
     }
 
     @Override
@@ -34,11 +31,11 @@ public final class MineArea extends JavaPlugin {
         // Plugin shutdown logic
         System.out.println("""
                 MineArea is Unloading. Thank you for using.
-                Build 0.3.20(0168)
-                To MixPixel
+                Build 0.3.21(0170)
+                For MixPixel
                 By Lettuce
                 With help from OpenAI's ChatGPT
-                On 18 Sep '23
+                On 19 Sep '23
                 In memories of Six Sixty
                 Bye!
                 """);

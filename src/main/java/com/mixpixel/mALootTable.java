@@ -21,6 +21,9 @@ public class mALootTable {
             Collection<ItemStack> lootItems = new ArrayList<>();
             for (String loot : loots) {
                 ConfigurationSection configurationSection = MineArea.main.configUsed.getConfigurationSection("LootTable");
+                if (MineArea.main.configUsed == null){
+                    configurationSection = MineArea.main.getConfig().getConfigurationSection("LootTable");
+                }
                 assert configurationSection != null;
                 int randomInteger = random.nextInt(10000);
                 if (configurationSection.get(loot+".Possibility") == null || configurationSection.get(loot + ".Id") == null){
